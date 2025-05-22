@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { TodoList, TodoListItem } from "./components/TodoList";
+import { TodoList, type TodoListItem } from "./components";
 
 import "./styles.scss";
 

@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./styles.scss";
+
 export type TodoListItem = {
   text: string;
   done: boolean;
