@@ -1,7 +1,12 @@
 import React from "react";
 
+export type TodoListItem = {
+  text: string;
+  done: boolean;
+};
+
 type TodoListProps = {
-  todos: any[];
+  todos: TodoListItem[];
 };
 export const TodoList = ({ todos }: TodoListProps) => {
   return (
