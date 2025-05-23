@@ -15,28 +15,34 @@ describe("App", () => {
     });
   };
 
+  const expectTodoAmount = (expectedAmount: number) => {
+    expect(screen.queryAllByText(/test/i)).toHaveLength(expectedAmount);
+  };
+
   it("should render", () => {
     const Component = render(<App />);
     expect(Component).not.toBeUndefined();
   });
 
-  it("creating todo items matches with the rendered amount", async () => {
+  it("creating todo items matches with the rendered amount and new item is added at top", async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await createTodo(user, "todo test item 1");
-    await createTodo(user, "todo test item 2");
+    await createTodo(user, "test 1");
+    await createTodo(user, "test 2");
 
-    expect(screen.getAllByText(/todo test item/i)).toHaveLength(2);
+    expectTodoAmount(2);
+    // test 2 was the latest created, so should placed first
+    expect(screen.getAllByText(/test/i)[0]).toHaveTextContent("test 2");
   });
 
   it("remove todo item", async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await createTodo(user, "todo test item 1");
+    await createTodo(user, "test 1");
 
-    expect(screen.getAllByText(/todo test item/i)).toHaveLength(1);
+    expectTodoAmount(1);
 
     const deleteIconBtns = screen.getAllByTestId("todo-delete");
 
@@ -44,15 +50,14 @@ describe("App", () => {
       await user.click(deleteIconBtns[0]);
     });
 
-    // `getBy` throws an error when it can't find anything. Hence `queryBy`
-    expect(screen.queryAllByText(/todo test item/i)).toHaveLength(0);
+    expectTodoAmount(0);
   });
 
   it("update todo item", async () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await createTodo(user, "todo test item 1");
+    await createTodo(user, "test 1");
 
     const editToggle = screen.getByTestId("todo-edit-toggle");
 
@@ -79,7 +84,7 @@ describe("App", () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await createTodo(user, "todo test item 1");
+    await createTodo(user, "test 1");
 
     const completionToggle = screen.getByTestId("todo-completion-toggle");
 
