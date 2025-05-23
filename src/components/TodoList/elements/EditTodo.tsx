@@ -17,6 +17,7 @@ export const EditTodo = ({
   return (
     <li>
       <input
+        data-testid="todo-edit-input"
         type="text"
         className="todoList-edit-input"
         id="todo-input"
@@ -25,6 +26,7 @@ export const EditTodo = ({
       />
       <div className="todoList-configure-cont">
         <i
+          data-testid="todo-edit-confirm"
           className="configure-icon fa-solid fa-check"
           onClick={() => onUpdate(id, editedText)}
         />
