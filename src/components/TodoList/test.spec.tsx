@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { TodoList } from ".";
 
-describe("CreateInput", () => {
+describe("TodoList", () => {
   const todoListFnProps = {
     onEditToggle: jest.fn(),
     onUpdate: jest.fn(),
