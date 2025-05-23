@@ -1,8 +1,8 @@
 import React from "react";
+import { EditTodo, type EditTodoProps } from "./elements/EditTodo";
+import { TodoItem, type TodoItemProps } from "./elements/TodoItem";
 
 import "./styles.scss";
-import { EditTodo, EditTodoProps } from "./elements/EditTodo";
-import { TodoItem } from "./elements/TodoItem";
 
 export type TodoItemData = {
   id: string;
@@ -13,9 +13,15 @@ export type TodoItemData = {
 
 type TodoListProps = {
   todos: TodoItemData[];
-} & Pick<EditTodoProps, "onEditToggle" | "onUpdate">;
+} & Pick<EditTodoProps, "onEditToggle" | "onUpdate"> &
+  Pick<TodoItemProps, "onDelete">;
 
-export const TodoList = ({ todos, onEditToggle, onUpdate }: TodoListProps) => {
+export const TodoList = ({
+  todos,
+  onEditToggle,
+  onUpdate,
+  onDelete,
+}: TodoListProps) => {
   return (
     <ul className="todoList">
       {todos.map((todo) =>
@@ -27,7 +33,12 @@ export const TodoList = ({ todos, onEditToggle, onUpdate }: TodoListProps) => {
             onUpdate={onUpdate}
           />
         ) : (
-          <TodoItem key={todo.id} todoData={todo} onEditToggle={onEditToggle} />
+          <TodoItem
+            key={todo.id}
+            todoData={todo}
+            onEditToggle={onEditToggle}
+            onDelete={onDelete}
+          />
         )
       )}
     </ul>

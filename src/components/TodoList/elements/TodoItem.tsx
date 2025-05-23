@@ -3,9 +3,14 @@ import { TodoItemData } from "..";
 export type TodoItemProps = {
   todoData: TodoItemData;
   onEditToggle: (id: string) => void;
+  onDelete: (id: string) => void;
 };
 
-export const TodoItem = ({ todoData, onEditToggle }: TodoItemProps) => {
+export const TodoItem = ({
+  todoData,
+  onEditToggle,
+  onDelete,
+}: TodoItemProps) => {
   const { text, id } = todoData;
   return (
     <li>
@@ -15,6 +20,10 @@ export const TodoItem = ({ todoData, onEditToggle }: TodoItemProps) => {
         <i
           className="configure-icon fa-solid fa-pen"
           onClick={() => onEditToggle(id)}
+        />
+        <i
+          className="configure-icon fa-solid fa-trash"
+          onClick={() => onDelete(id)}
         />
       </div>
     </li>

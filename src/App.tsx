@@ -27,6 +27,12 @@ export default function App() {
     setTodos([...todos, newTodoObj]);
   };
 
+  // Delete Todo Feature
+  const onDelete = (selectedTodoId: string) => {
+    // filter out the removed todo based on the selected id
+    setTodos(todos.filter((todo) => todo.id !== selectedTodoId));
+  };
+
   // Edit Toggle Feature
   const onEditToggle = (selectedTaskID: string) => {
     // update the todo list and update the necessary states matching with the passed task index
@@ -45,6 +51,8 @@ export default function App() {
 
   // Update Todo Feature
   const onUpdate = (updateTaskID: string, updatedValue: string) => {
+    if (!updatedValue.length) return; // make sure input value exists
+
     // update the todo list and update the necessary states matching with the passed task index
     const updatedTodos = todos.map((todo) =>
       updateTaskID === todo.id
@@ -63,7 +71,12 @@ export default function App() {
     <div className="todoListApp">
       <div className="forsta-logo" />
       <CreateInput onSubmit={onAdd} />
-      <TodoList todos={todos} onEditToggle={onEditToggle} onUpdate={onUpdate} />
+      <TodoList
+        todos={todos}
+        onEditToggle={onEditToggle}
+        onUpdate={onUpdate}
+        onDelete={onDelete}
+      />
     </div>
   );
 }
