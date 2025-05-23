@@ -12,7 +12,13 @@
     list-style: none;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
+    gap: 4px;
+
+    &.todo-done {
+      color: #757575;
+      background: rgba(255, 255, 255, 0.2);
+    }
   }
 
   &-configure-cont {
@@ -27,6 +33,14 @@
     border: 1px solid #d9d9d9;
     width: 165px;
   }
+}
+
+.fa-square-check {
+  cursor: pointer;
+}
+
+.complete-icon {
+  color: #4caf50;
 }
 
 .configure-icon {

@@ -14,13 +14,14 @@ export type TodoItemData = {
 type TodoListProps = {
   todos: TodoItemData[];
 } & Pick<EditTodoProps, "onEditToggle" | "onUpdate"> &
-  Pick<TodoItemProps, "onDelete">;
+  Pick<TodoItemProps, "onDelete" | "onCompletionToggle">;
 
 export const TodoList = ({
   todos,
   onEditToggle,
   onUpdate,
   onDelete,
+  onCompletionToggle,
 }: TodoListProps) => {
   return (
     <ul className="todoList">
@@ -38,6 +39,7 @@ export const TodoList = ({
             todoData={todo}
             onEditToggle={onEditToggle}
             onDelete={onDelete}
+            onCompletionToggle={onCompletionToggle}
           />
         )
       )}
