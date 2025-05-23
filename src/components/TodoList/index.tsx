@@ -26,7 +26,7 @@ export const TodoList = ({
   if (!todos.length) {
     return (
       <p className="todoList-empty">
-        Your life seems pretty relaxing. I'm jealous.
+        Nice work! Your life seems pretty relaxing. I'm jealous.
         <img
           src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20Holding%20Back%20Tears.png"
           alt="Face Holding Back Tears"

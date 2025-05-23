@@ -10,13 +10,13 @@ export default function App() {
   const onAdd = (newTodo: string) => {
     if (!newTodo.length) return;
     setTodos([
-      ...todos,
       {
         id: Date.now(),
         text: newTodo,
         done: false,
         isEditing: false,
       },
+      ...todos,
     ]);
   };
 
