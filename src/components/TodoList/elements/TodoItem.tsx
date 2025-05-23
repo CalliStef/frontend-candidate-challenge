@@ -3,9 +3,9 @@ import { TodoItemData } from "..";
 
 export type TodoItemProps = {
   todoData: TodoItemData;
-  onEditToggle: (id: string) => void;
-  onDelete: (id: string) => void;
-  onCompletionToggle: (id: string) => void;
+  onEditToggle: (id: number) => void;
+  onDelete: (id: number) => void;
+  onCompletionToggle: (id: number) => void;
 };
 
 const getCompletionClass = (done: boolean) => {

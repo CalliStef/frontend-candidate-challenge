@@ -21,7 +21,7 @@ describe("TodoList", () => {
 
   it("render the listed todos", async () => {
     const todo = {
-      id: "a-very-unique-id",
+      id: Date.now(),
       text: "sleep for 60 hours",
       done: false,
       isEditing: false,

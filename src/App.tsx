@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { TodoList, CreateInput, type TodoItemData } from "./components";
-import { v4 as uuidv4 } from "uuid";
 
 import "./styles.scss";
 
@@ -13,7 +12,7 @@ export default function App() {
     setTodos([
       ...todos,
       {
-        id: uuidv4(),
+        id: Date.now(),
         text: newTodo,
         done: false,
         isEditing: false,
@@ -21,11 +20,11 @@ export default function App() {
     ]);
   };
 
-  const onDelete = (selectedTodoID: string) => {
+  const onDelete = (selectedTodoID: number) => {
     setTodos(todos.filter((todo) => todo.id !== selectedTodoID));
   };
 
-  const onEditToggle = (selectedTodoID: string) => {
+  const onEditToggle = (selectedTodoID: number) => {
     setTodos(
       todos.map((t) => ({
         ...t,
@@ -34,25 +33,34 @@ export default function App() {
     );
   };
 
-  const onUpdate = (updateTaskID: string, updatedValue: string) => {
+  const onUpdate = (updateTaskID: number, updatedValue: string) => {
     if (!updatedValue.length) return;
 
     setTodos(
       todos.map((t) => ({
         ...t,
         text: updateTaskID === t.id ? updatedValue : t.text,
-        isEditing: false,
+        isEditing: updateTaskID === t.id ? false : t.isEditing,
       }))
     );
   };
 
-  const onTodoCompletionToggle = (selectedTodoID: string) => {
-    setTodos(
-      todos.map((t) => ({
-        ...t,
-        done: selectedTodoID === t.id ? !t.done : t.done,
-      }))
-    );
+  const onTodoCompletionToggle = (selectedTodoID: number) => {
+    const updatedTodoStates = todos.map((t) => ({
+      ...t,
+      done: selectedTodoID === t.id ? !t.done : t.done,
+    }));
+
+    // priortize showing in-progress todos first, completed ones are pushed below
+    const sortedTodos = updatedTodoStates.sort((todoA, todoB) => {
+      if (todoA.done === todoB.done) {
+        return todoB.id - todoA.id;
+      }
+
+      return todoA.done ? 1 : -1;
+    });
+
+    setTodos(sortedTodos);
   };
 
   return (

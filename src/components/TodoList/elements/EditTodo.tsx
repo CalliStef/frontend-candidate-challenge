@@ -3,8 +3,8 @@ import { TodoItemData } from "..";
 
 export type EditTodoProps = {
   todoData: TodoItemData;
-  onEditToggle: (id: string) => void;
-  onUpdate: (id: string, v: string) => void;
+  onEditToggle: (id: number) => void;
+  onUpdate: (id: number, v: string) => void;
 };
 
 export const EditTodo = ({

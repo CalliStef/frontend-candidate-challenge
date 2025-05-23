@@ -5,7 +5,7 @@ import { TodoItem, type TodoItemProps } from "./elements/TodoItem";
 import "./styles.scss";
 
 export type TodoItemData = {
-  id: string;
+  id: number;
   text: string;
   done: boolean;
   isEditing: boolean;

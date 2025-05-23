@@ -17,6 +17,7 @@ export const CreateInput = ({ onSubmit }: CreateInputProps) => {
           type="text"
           id="todo-input"
           name="add-todo-input"
+          value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
         <button
