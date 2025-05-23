@@ -13,9 +13,10 @@ export const CreateInput = ({ onSubmit }: CreateInputProps) => {
       <label htmlFor="task">Create a todo task:</label>
       <div>
         <input
+          data-testid="add-todo-input"
           type="text"
           id="todo-input"
-          name="addTodo"
+          name="add-todo-input"
           onChange={(e) => setInputValue(e.target.value)}
         />
         <button
