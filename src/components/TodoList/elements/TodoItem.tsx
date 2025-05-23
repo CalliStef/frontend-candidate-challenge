@@ -29,7 +29,6 @@ export const TodoItem = ({
         className={`${getCompletionClass(done)} fa-square-check`}
         onClick={() => onCompletionToggle(id)}
       />
-      {/* TODO:  bring back `data-testid` attribute for automated testing later on */}
       <TextEl>{text}</TextEl>
       <div className="todoList-configure-cont">
         <i

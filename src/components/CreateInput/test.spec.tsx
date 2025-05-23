@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import { CreateInput } from ".";
 import userEvent from "@testing-library/user-event";
 

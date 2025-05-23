@@ -11,7 +11,7 @@ export type TodoItemData = {
   isEditing: boolean;
 };
 
-type TodoListProps = {
+export type TodoListProps = {
   todos: TodoItemData[];
 } & Pick<EditTodoProps, "onEditToggle" | "onUpdate"> &
   Pick<TodoItemProps, "onDelete" | "onCompletionToggle">;
