@@ -28,7 +28,7 @@ export const TodoList = ({
       <p className="todoList-empty">
         Nice work! Your life seems pretty relaxing. I'm jealous.
         <img
-          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20Holding%20Back%20Tears.png"
+          src="/images/teary-emoji-3d.png"
           alt="Face Holding Back Tears"
           width="30"
           height="30"
