@@ -24,12 +24,10 @@ export const EditTodo = ({
         onChange={(e) => setEditedText(e.target.value)}
       />
       <div className="todoList-configure-cont">
-        {/* check icon -- click to update todo item's text */}
         <i
           className="configure-icon fa-solid fa-check"
           onClick={() => onUpdate(id, editedText)}
         />
-        {/* cancel icon -- click to cancel editing the todo item */}
         <i
           className="configure-icon fa-solid fa-xmark"
           onClick={() => onEditToggle(id)}

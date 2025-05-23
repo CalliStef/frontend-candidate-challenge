@@ -23,10 +23,24 @@ export const TodoList = ({
   onDelete,
   onCompletionToggle,
 }: TodoListProps) => {
+  if (!todos.length) {
+    return (
+      <p className="todoList-empty">
+        Your life seems pretty relaxing. I'm jealous.
+        <img
+          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20Holding%20Back%20Tears.png"
+          alt="Face Holding Back Tears"
+          width="30"
+          height="30"
+        />
+      </p>
+    );
+  }
+
   return (
     <ul className="todoList">
       {todos.map((todo) =>
-        todo.isEditing ? ( // render the todo variants based on the todo's editing state
+        todo.isEditing ? (
           <EditTodo
             key={todo.id}
             todoData={todo}

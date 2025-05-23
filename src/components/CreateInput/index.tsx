@@ -10,7 +10,7 @@ export const CreateInput = ({ onSubmit }: CreateInputProps) => {
   const [inputValue, setInputValue] = useState<string>("");
   return (
     <div className="addTodo">
-      <label htmlFor="task">Create a task:</label>
+      <label htmlFor="task">Create a todo task:</label>
       <div>
         <input
           type="text"
@@ -18,7 +18,14 @@ export const CreateInput = ({ onSubmit }: CreateInputProps) => {
           name="addTodo"
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <button onClick={() => onSubmit(inputValue)}>Add</button>
+        <button
+          onClick={() => {
+            onSubmit(inputValue);
+            setInputValue("");
+          }}
+        >
+          Add
+        </button>
       </div>
     </div>
   );
