@@ -51,7 +51,7 @@ export default function App() {
       done: selectedTodoID === t.id ? !t.done : t.done,
     }));
 
-    // priortize showing in-progress todos first, completed ones are pushed below
+    // priortize showing in-progress todos first, completed ones are pushed below. Otherwise, sort by earliest time (id) first
     const sortedTodos = updatedTodoStates.sort((todoA, todoB) => {
       if (todoA.done === todoB.done) {
         return todoB.id - todoA.id;
